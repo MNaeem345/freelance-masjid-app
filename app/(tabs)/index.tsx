@@ -204,12 +204,6 @@ function isIshaOrMagribSegmentActive() {
   
 }
 
-
-
-
-
-
-  
   useEffect(() => {
     const listener = animation.addListener(({ value }) => {
       if (gradientRef.current) {
@@ -241,11 +235,11 @@ function isIshaOrMagribSegmentActive() {
 
 {isIshaOrMagribSegmentActive() && (
   <View style={styles.starContainer}>
-    <Image source={require('../../assets/images/thinsmooth.png')} style={[styles.star, { top: 59, left: 50 }]} />
-    <Image source={require('../../assets/images/thinsmooth.png')} style={[styles.star, { top: 160, left: 20 }]} />
-    <Image source={require('../../assets/images/thinsmooth.png')} style={[styles.star, { top: 90, left: 300 }]} />
-    <Image source={require('../../assets/images/thinsmooth.png')} style={[styles.star, { top: 270, left: 170 }]} />
-    <Image source={require('../../assets/images/thinsmooth.png')} style={[styles.star, { top: 150, left: 320 }]} />
+    <Image source={require('../../assets/images/thinsmooth.png')} style={[styles.star1, { top: 135, left: 200 }]} />
+    <Image source={require('../../assets/images/thinsmooth.png')} style={[styles.star2, { top: 180, left: 250 }]} />
+    <Image source={require('../../assets/images/thinsmooth.png')} style={[styles.star3, { top: 90, left: 300 }]} />
+    <Image source={require('../../assets/images/thinsmooth.png')} style={[styles.star4, { top: 270, left: 180 }]} />
+    <Image source={require('../../assets/images/thinsmooth.png')} style={[styles.star5, { top: 150, left: 350 }]} />
   </View>
 )}
 
@@ -421,6 +415,41 @@ const styles = StyleSheet.create({
     height: 20,
 
     position: 'absolute',
-    opacity: 0.7,
+    
+  },
+  star1: {
+    width: 13,
+    height: 13,
+
+    position: 'absolute',
+    
+  },
+  star3: {
+    width: 17,
+    height: 17,
+
+    position: 'absolute',
+   
+  },
+  star2: {
+    width: 10,
+    height: 10,
+
+    position: 'absolute',
+    
+  },
+  star4: {
+    width: 10,
+    height: 10,
+
+    position: 'absolute',
+    
+  },
+  star5: {
+    width: 20,
+    height: 20,
+
+    position: 'absolute',
+    
   },
 });
