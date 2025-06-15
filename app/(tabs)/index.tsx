@@ -114,7 +114,7 @@ function getHijriDateEnglish() {
   const monthIndex = moment().iMonth(); // month index 0-11 (Hijri)
   const year = moment().iYear(); // Hijri year
   const monthName = hijriMonthsEnglish[monthIndex];
-  return `${day} ${monthName} ${year}`;
+  return `${monthName} ${day} ${year}`;
 }
 
 
@@ -336,7 +336,7 @@ const styles = StyleSheet.create({
   },
   date:{
     color: 'white',
-    fontWeight: 'thin',
+    fontWeight: 'bold',
     textAlign: 'left',
     fontFamily: 'RobotoMono_400Regular',
     justifyContent: 'center',
@@ -351,5 +351,6 @@ const styles = StyleSheet.create({
     fontFamily: 'RobotoMono_400Regular',
     justifyContent: 'center',
     marginLeft: 40,
+    marginTop: 5,
   }
 });
