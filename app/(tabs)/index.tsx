@@ -6,6 +6,7 @@ import {
   Text,
   ImageBackground,
   Dimensions,
+  Image,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { AppState } from 'react-native';
@@ -89,6 +90,15 @@ function getCurrentTimeSegmentIndex() {
   const now = getCurrentMinutes();
   for (let i = 0; i < TIME_SEGMENTS.length; i++) {
     const { start, end } = TIME_SEGMENTS[i];
+    if (isTimeInRange(now, start, end)) return i;
+  }
+  return 0;
+}
+
+function getNextTimeSegmentIndex() {
+  const now = getCurrentMinutes();
+  for (let i = 0; i < TIME_SEGMENTS.length; i++) {
+    const { start, end } = TIME_SEGMENTS[i];
     if (isTimeInRange(now, start, end)) return i+1;
   }
   return 0;
@@ -147,7 +157,7 @@ export default function TabOneScreen() {
  
   // This updates the list scroll to the current time segment
 const snapToCurrentTimeSegment = () => {
-  const index = getCurrentTimeSegmentIndex();
+  const index = getNextTimeSegmentIndex();
   flatListRef.current?.scrollToIndex({ index, animated: true });
 };
 
@@ -186,8 +196,18 @@ useEffect(() => {
   return () => clearInterval(gradientInterval);
 }, []);
 
-    
+function isIshaOrMagribSegmentActive() {
+  const index = getCurrentTimeSegmentIndex();
+  const name = TIME_SEGMENTS[index].name;
+  return name === 'isha' || name === 'magrib';
+
   
+}
+
+
+
+
+
 
   
   useEffect(() => {
@@ -207,15 +227,31 @@ useEffect(() => {
         colors={colors.length > 0 ? colors : ['#000', '#000']}
         style={styles.gradient}
       />
+
+
+
       <ImageBackground
         source={require('../../assets/images/Masjid-Silhouette.png')}
         style={StyleSheet.absoluteFill}
         resizeMode="cover"
+
+        
+        
       />
+
+{isIshaOrMagribSegmentActive() && (
+  <View style={styles.starContainer}>
+    <Image source={require('../../assets/images/thinsmooth.png')} style={[styles.star, { top: 59, left: 50 }]} />
+    <Image source={require('../../assets/images/thinsmooth.png')} style={[styles.star, { top: 160, left: 20 }]} />
+    <Image source={require('../../assets/images/thinsmooth.png')} style={[styles.star, { top: 90, left: 300 }]} />
+    <Image source={require('../../assets/images/thinsmooth.png')} style={[styles.star, { top: 270, left: 170 }]} />
+    <Image source={require('../../assets/images/thinsmooth.png')} style={[styles.star, { top: 150, left: 320 }]} />
+  </View>
+)}
 
       <Text style={styles.date}>{displayString}</Text>
       <Text style={styles.hijraDate}>{hijriDate}</Text>
-
+      
 
         <Animated.FlatList
           ref={flatListRef}
@@ -256,6 +292,7 @@ useEffect(() => {
 
             return (
               <Animated.View style={[styles.item, { transform: [{ scale }, {translateX}], opacity }]}>
+
                 <Text style={styles.text}>{item.name}</Text>
                 <Text style={styles.time}>{minutesToTimeString(item.start)}</Text>
               </Animated.View>
@@ -366,5 +403,24 @@ const styles = StyleSheet.create({
     shadowOpacity:0.3,
     shadowOffset:{width:1,height:1},
     shadowRadius:1.5
-  }
+  },
+  stars:{
+    width:100,
+    height:100
+  },
+  starContainer: {
+    ...StyleSheet.absoluteFillObject,
+    // stays behind text
+    zIndex: 5,
+  pointerEvents: 'none',
+    
+  },
+  
+  star: {
+    width: 20,
+    height: 20,
+
+    position: 'absolute',
+    opacity: 0.7,
+  },
 });
