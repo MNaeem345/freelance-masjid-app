@@ -318,24 +318,26 @@ const styles = StyleSheet.create({
     height: ITEM_HEIGHT,
     justifyContent: 'center',
     marginLeft: 40,
+    width:'100%'
   
   },
   text: {
     fontSize: 28,
     color: 'white',
-    fontWeight: 'bold',
+    
     textAlign: 'left',
-    fontFamily: 'RobotoMono_400Regular', // 👈 Apply the font
+    fontFamily: 'Roboto', // 👈 Apply the font
     textTransform:'capitalize',
     shadowOpacity:0.7,
     shadowOffset:{width:1,height:1},
-    shadowRadius:1.5
+    shadowRadius:1.5,
+    width:'100%'
   },
   time:{
     color: 'white',
     fontWeight: 'thin',
     textAlign: 'left',
-    fontFamily: 'RobotoMono_400Regular',
+    fontFamily: 'Roboto',
     shadowOpacity:0.7,
     shadowOffset:{width:1,height:1},
     shadowRadius:1.5
