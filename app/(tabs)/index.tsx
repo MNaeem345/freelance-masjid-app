@@ -157,7 +157,7 @@ useEffect(() => {
 
   const snapInterval = setInterval(() => {
     snapToCurrentTimeSegment();
-  }, 1000 * 60 * 0.1); // every 10 minutes
+  }, 1000 * 60 * 0.04); // every 10 minutes
 
   return () => clearInterval(snapInterval);
 }, []);
@@ -250,7 +250,7 @@ useEffect(() => {
 
             const opacity = scrollY.interpolate({
               inputRange,
-              outputRange: [0.2, 0.5, 1, 0.1, 0], // sharper curve
+              outputRange: [0.4, 0.8, 1, 0.1, 0], // sharper curve
               extrapolate: 'clamp',
             });
 
@@ -326,13 +326,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'left',
     fontFamily: 'RobotoMono_400Regular', // 👈 Apply the font
-    textTransform:'capitalize'
+    textTransform:'capitalize',
+    shadowOpacity:0.7,
+    shadowOffset:{width:1,height:1},
+    shadowRadius:1.5
   },
   time:{
     color: 'white',
     fontWeight: 'thin',
     textAlign: 'left',
     fontFamily: 'RobotoMono_400Regular',
+    shadowOpacity:0.7,
+    shadowOffset:{width:1,height:1},
+    shadowRadius:1.5
   },
   date:{
     color: 'white',
@@ -342,7 +348,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 40,
     fontSize: 20,
-    marginTop:30
+    marginTop:30,
+    shadowOpacity:0.3,
+    shadowOffset:{width:1,height:1},
+    shadowRadius:1.5
   },
   hijraDate:{
     color: 'white',
@@ -352,5 +361,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 40,
     marginTop: 5,
+    shadowOpacity:0.3,
+    shadowOffset:{width:1,height:1},
+    shadowRadius:1.5
   }
 });
