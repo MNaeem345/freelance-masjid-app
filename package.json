@@ -13,9 +13,11 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@expo-google-fonts/roboto-mono": "^0.4.0",
     "@expo/vector-icons": "^14.1.0",
     "@react-navigation/native": "^7.1.6",
     "expo": "~53.0.11",
+    "expo-app-loading": "^2.1.1",
     "expo-font": "~13.3.1",
     "expo-linear-gradient": "^14.1.5",
     "expo-linking": "~7.1.5",
@@ -24,6 +26,7 @@
     "expo-status-bar": "~2.2.3",
     "expo-system-ui": "~5.0.8",
     "expo-web-browser": "~14.1.6",
+    "moment-hijri": "^3.0.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-native": "0.79.3",
