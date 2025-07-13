@@ -26,6 +26,13 @@ export default function TabLayout() {
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),
+        tabBarStyle:{
+          backgroundColor: 'transparent', // Transparent background
+          position: 'absolute',          // Optional: float it
+          elevation: 0,                 // Remove shadow on Android
+        },
+        tabBarBackground: () => null,   // Optional: fully remove background view
+
       }}>
       <Tabs.Screen
         name="index"

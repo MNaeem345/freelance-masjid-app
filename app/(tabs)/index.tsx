@@ -99,7 +99,9 @@ function getNextTimeSegmentIndex() {
   const now = getCurrentMinutes();
   for (let i = 0; i < TIME_SEGMENTS.length; i++) {
     const { start, end } = TIME_SEGMENTS[i];
-    if (isTimeInRange(now, start, end)) return i+1;
+    if (isTimeInRange(now, start, end)) {
+      return (i + 1) % TIME_SEGMENTS.length; 
+    }
   }
   return 0;
 }
@@ -119,6 +121,8 @@ const hijriMonthsEnglish = [
   'Dhu al-Hijjah',
 ];
 
+
+//Arabic calender
 function getHijriDateEnglish() {
   const day = moment().iDate(); // day in month (Hijri)
   const monthIndex = moment().iMonth(); // month index 0-11 (Hijri)
@@ -170,7 +174,7 @@ useEffect(() => {
   }, 1000 * 60 * 0.04); // every 10 minutes
 
   return () => clearInterval(snapInterval);
-}, []);
+}, []); 
 
 // Effect 2: Update gradient colors with shorter duration and faster interval
 useEffect(() => {
